@@ -1,0 +1,18 @@
+.header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     border-bottom: 1px solid whitesmoke;
+}
+
+.header_left {
+     display: flex;
+     align-items: center;
+}
+
+.header_left > img {
+     object-fit: contain;
+     margin-left: 5px;
+     height: 80px;
+}
+

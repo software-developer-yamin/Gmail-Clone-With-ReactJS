@@ -8,7 +8,7 @@ import {
   MoreVert,
   People,
   Redo,
-  Settings,
+  Settings
 } from "@mui/icons-material";
 import { Checkbox, IconButton } from "@mui/material";
 import "../styles/EmailList.css";
@@ -16,6 +16,7 @@ import EmailRow from "./EmailRow";
 import Section from "./Section";
 
 function EmailList() {
+  
   return (
     <section className="emailList">
       <header className="emailList_settings">

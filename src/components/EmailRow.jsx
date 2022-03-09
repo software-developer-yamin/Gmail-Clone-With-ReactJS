@@ -4,10 +4,13 @@ import {
 } from "@mui/icons-material";
 import { Checkbox, IconButton } from "@mui/material";
 import "../styles/EmailRow.css";
+import { useNavigate } from "react-router-dom";
 
 function EmailRow({ id, title, description, subject, time }) {
+  const navigate = useNavigate();
+
   return (
-    <section className="emailRow">
+    <section onClick={() => navigate("/mail")} className="emailRow">
       <div className="emailRow_options">
         <Checkbox />
         <IconButton>

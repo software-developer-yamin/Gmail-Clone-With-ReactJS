@@ -1,7 +1,15 @@
-import "../styles/Header.css"
+import { Menu } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import "../styles/Header.css";
 
 function Header() {
-  return <div>Header</div>;
+  return (
+    <header className="header">
+      <IconButton>
+        <Menu />
+      </IconButton>
+    </header>
+  );
 }
 
 export default Header;

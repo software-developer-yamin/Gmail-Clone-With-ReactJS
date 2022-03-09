@@ -1,11 +1,11 @@
 import "../styles/SidebarOption.css";
 
 function SidebarOption({Icon,title,number,selected}) {
-  return <div className={`sidebarOption ${ selected && "sidebarOption--active"} `} >
+  return <section className={`sidebarOption ${ selected && "sidebarOption--active"} `} >
     <Icon />
     <h3>{title}</h3>
     <p>{number}</p>
-  </div>;
+  </section>;
 }
 
 export default SidebarOption;

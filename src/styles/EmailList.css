@@ -16,10 +16,23 @@
 }
 
 .emailList_sections {
-     position:sticky;
-     top:0;
-     display: flex;
-     border-bottom: 1px solid whitesmoke;
-     background-color: white;
-     z-index: 999;
+  position: sticky;
+  top: 0;
+  display: flex;
+  border-bottom: 1px solid whitesmoke;
+  background-color: white;
+  z-index: 999;
+}
+
+.emailList_list {
+  padding-bottom: 20%;
+}
+
+.emailList::-webkit-scrollbar {
+  display: none;
+}
+
+.emailList {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

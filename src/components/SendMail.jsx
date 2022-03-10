@@ -25,7 +25,7 @@ function SendMail() {
       <form>
         <input
           placeholder="To"
-          type="text"
+          type="email"
           {...register("to", { required: true })}
         />
         {errors.to && <span className="sendMail_error">To is required!</span>}

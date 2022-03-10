@@ -1,24 +1,26 @@
 import { Close } from "@mui/icons-material";
 import { Button, IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { closeSendMessage } from "../features/mail/mailSlice";
 import "../styles/SendMail.css";
 
 function SendMail() {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  const onSubmit = (data) => console.log(data);
 
   return (
     <section onSubmit={handleSubmit(onSubmit)} className="sendMail">
       <header className="sendMail_header">
         <h3>New Message</h3>
-        <IconButton>
+        <IconButton onClick={() => dispatch(closeSendMessage())}>
           <Close className="sendMail_close" />
         </IconButton>
       </header>
@@ -43,7 +45,9 @@ function SendMail() {
           type="text"
           {...register("message", { required: true })}
         />
-        {errors.to && <span className="sendMail_error">Message is required!</span>}
+        {errors.to && (
+          <span className="sendMail_error">Message is required!</span>
+        )}
         <div className="sendMail_options">
           <Button
             variant="contained"

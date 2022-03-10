@@ -12,13 +12,21 @@ import {
   Star,
 } from "@mui/icons-material";
 import { Button, IconButton } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../features/mail/mailSlice";
 import "../styles/Sidebar.css";
 import SidebarOption from "./SidebarOption";
 
 function Sidebar() {
+  const dispatch = useDispatch();
+
   return (
     <section className="sidebar">
-      <Button startIcon={<Add fontSize="large" />} className="sidebar_compose">
+      <Button
+        startIcon={<Add fontSize="large" />}
+        className="sidebar_compose"
+        onClick={() => dispatch(openSendMessage())}
+      >
         Compose
       </Button>
 

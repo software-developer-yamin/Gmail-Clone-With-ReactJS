@@ -8,15 +8,31 @@ import {
   MoreVert,
   People,
   Redo,
-  Settings
+  Settings,
 } from "@mui/icons-material";
 import { Checkbox, IconButton } from "@mui/material";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
 import "../styles/EmailList.css";
 import EmailRow from "./EmailRow";
 import Section from "./Section";
 
 function EmailList() {
-  
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
   return (
     <section className="emailList">
       <header className="emailList_settings">
@@ -53,24 +69,16 @@ function EmailList() {
         <Section Icon={LocalOffer} title="Promotions" color="green" />
       </section>
       <main className="emailList_list">
-        <EmailRow
-          title="Title"
-          subject="Subject"
-          description="Description"
-          time="Time"
-        />
-        <EmailRow
-          title="Title"
-          subject="Subject"
-          description="Description"
-          time="Time"
-        />
-        <EmailRow
-          title="Title"
-          subject="Subject"
-          description="Description"
-          time="Time"
-        />
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        ))}
       </main>
     </section>
   );

@@ -1,8 +1,10 @@
 import { Close } from "@mui/icons-material";
 import { Button, IconButton } from "@mui/material";
+import { serverTimestamp } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "../features/mail/mailSlice";
+import { db } from "../firebase";
 import "../styles/SendMail.css";
 
 function SendMail() {
@@ -14,7 +16,15 @@ function SendMail() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    db.collection("emails").add({
+      to: data.to,
+      subject: data.subject,
+      message: data.message,
+      timestamp: serverTimestamp(),
+    });
+    dispatch(closeSendMessage());
+  };
 
   return (
     <section onSubmit={handleSubmit(onSubmit)} className="sendMail">

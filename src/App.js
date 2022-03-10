@@ -3,6 +3,7 @@ import "./App.css";
 import EmailList from "./components/EmailList";
 import Header from "./components/Header";
 import Mail from "./components/Mail";
+import SendMail from "./components/SendMail";
 import Sidebar from "./components/Sidebar";
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/mail" element={<Mail />} />
         </Routes>
       </main>
+      <SendMail />
     </div>
 
   );

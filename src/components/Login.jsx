@@ -28,7 +28,9 @@ function Login() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png"
           alt=""
         />
-        <Button onClick={signIn}>Login</Button>
+        <Button variant="contained" color="primary" onClick={signIn}>
+          Login
+        </Button>
       </div>
     </section>
   );
